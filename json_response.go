@@ -10,7 +10,10 @@ type Message struct {
 }
 
 func Resp(w http.ResponseWriter, msg string) {
-	m := Message{Message:msg}
+	m := []Message{
+		{Message:msg},
+		{Message:msg},
+	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	json.NewEncoder(w).Encode(m)
